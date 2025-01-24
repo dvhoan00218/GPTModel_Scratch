@@ -147,15 +147,15 @@ def get_or_build_tokenizer(config, ds, lang):
 
 def get_ds(config):
     # It only has the train split, so we divide it overselves
-    # ds_raw = load_dataset(f"{config['datasource']}", split='train')
-    ds_raw = load_dataset("parquet", data_dir='data', data_files='Train_dataset.parquet')
-    ds_raw = ds_raw['train']
+    ds_raw = load_dataset(f"{config['datasource']}", split='train')
+    # ds_raw = load_dataset("parquet", data_dir='data', data_files='Train_dataset.parquet')
+    # ds_raw = ds_raw['train']
 
     # Build tokenizers
     tokenizer_src = get_or_build_tokenizer(config, ds_raw, config['lang_src'])
 
     # Keep 90% for training, 10% for validation
-    train_ds_size = int(0.3 * len(ds_raw))
+    train_ds_size = int(0.9 * len(ds_raw))
     val_ds_size = len(ds_raw) - train_ds_size
     train_ds_raw, val_ds_raw = random_split(ds_raw, [train_ds_size, val_ds_size])
 
