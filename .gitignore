@@ -1,0 +1,10 @@
+__pycache__
+*.pt
+*.json
+runs/
+weights/
+harouzie/
+
+wandb/
+.venv/
+data/
