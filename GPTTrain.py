@@ -215,7 +215,7 @@ def train_model(config):
     global_step = 0
     preload = config['preload']
     model_filename = latest_weights_file_path(config) if preload == 'latest' else get_weights_file_path(config, preload) if preload else None
-    # model_filename = None
+    model_filename = '/kaggle/input/transformer/pytorch/transformer/3/GPTmodel_09.pt'
     if model_filename:
         print(f'Preloading model {model_filename}')
         state = torch.load(model_filename)
